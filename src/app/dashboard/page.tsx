@@ -11,7 +11,7 @@ export default async function Dashboard() {
 
     return (
         <div>
-            Usuário: {session.user.username}
+            Usuário: {session.user.name}
         </div>
     )
 }
