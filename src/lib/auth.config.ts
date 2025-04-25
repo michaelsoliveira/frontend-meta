@@ -27,7 +27,7 @@ const authConfig = {
 
                     const { user, error, message } = data
 
-                    return {...user, name: user.username, accessToken: user.accessToken}
+                    return user
                 } catch(error) {
                     console.log(error)
                     return null
@@ -41,14 +41,23 @@ const authConfig = {
         maxAge: 24 * 60 * 60
     },
     callbacks: {
-        async jwt({ user, token }) {
-            console.log(user, token)
+        async jwt({ user, token, account }: any) {
+            if (user) {
+                token.id = user.id
+                token.email = user.email
+                token.username = user.username
+                token.image = user.image
+                token.accessToken = user.access_token
+            }
             return token
         },
         async session({ session, token, user }: any) {
-            console.log(token)
-            session.user = token
-            session.expires_in = token.expires_in
+            session.user = {
+                id: token.id,
+                email: token.email,
+                username: token.username,
+                image: token.image
+            }
             session.accessToken = token.accessToken
             return session
         }

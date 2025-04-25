@@ -11,7 +11,7 @@ export default async function Dashboard() {
 
     return (
         <div>
-            Usuário: {session.user.name}
+            {JSON.stringify(session, null, 2)}
         </div>
     )
 }
