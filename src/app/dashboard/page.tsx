@@ -11,7 +11,7 @@ export default async function Dashboard() {
 
     return (
         <div>
-            {JSON.stringify(session, null, 2)}
+            <span className='text-2xl'>Seja bem vindo, {session.user.username}</span>
         </div>
     )
 }

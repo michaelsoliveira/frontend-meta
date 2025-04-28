@@ -20,7 +20,7 @@ export default function Header() {
       ]
   
       const userNavigation = [
-          { name: `Perfil (${user?.name})`, href: '#' },
+          { name: `Perfil (${user?.username})`, href: '#' },
           { name: 'Alterar Senha', href: '/user/change-password' },
           { name: 'Logout', href: '#', click: () => signOut({ callbackUrl: "/" }) },
       ]
