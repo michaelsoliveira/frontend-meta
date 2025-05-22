@@ -48,6 +48,7 @@ const UserAuthForm = () => {
                 password: data.password,
                 redirect: false
             })
+            console.log(response)
 
             if (response?.error && response?.error === "CredentialsSignin") {
                 toast.warning('Oops, Ocorreu um erro na autenticação', {

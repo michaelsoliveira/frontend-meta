@@ -63,8 +63,10 @@ const authConfig = {
         }
     },
     pages: {
-        signIn: '/'
-    }
+        signIn: '/',
+        error: '/'
+    },
+    secret: process.env.AUTH_SECRET
 } satisfies NextAuthConfig
 
 export default authConfig
