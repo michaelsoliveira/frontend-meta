@@ -25,7 +25,7 @@ export default function Header() {
           { name: 'Logout', href: '#', click: () => signOut({ callbackUrl: "/" }) },
       ]
   return (
-    <header className='flex h-16 shrink-0 items-center justify-between gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12'>
+    <header className="w-full fixed top-0 left-0 z-50 bg-white shadow">
       <Navigation 
         defaultNavigation={defaultNavigation}
         userNavigation={userNavigation}

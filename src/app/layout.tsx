@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { auth } from "@/lib/auth";
 import Providers from "@/components/layout/providers";
+import Header from "@/components/layout/header";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '700', '900'],
+  display: 'swap'
 });
 
 export const metadata: Metadata = {
@@ -26,12 +23,14 @@ export default async function RootLayout({
 }>) {
   const session = await auth();
   return (
-    <html lang="en" className="light" style={{ colorScheme: "light" }}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" 
+      className={`${inter.className}`}  
+      style={{ colorScheme: "light" }}
+    >
+      <body className="bg-white text-gray-900">
         <Providers session={session}>
-          {children}
+          <Header />
+          <main className="mt-18">{children}</main>
         </Providers>
       </body>
     </html>

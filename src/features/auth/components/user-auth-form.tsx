@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
-import { useTransition } from "react"
+import { useState, useTransition } from "react"
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { toast } from 'sonner'
@@ -29,6 +29,7 @@ const formSchema = z.object({
 type UserFormValue = z.infer<typeof formSchema>;
 
 const UserAuthForm = () => {
+    const [username, setUsername] = useState<string>()
     const router = useRouter();
     const [loading, startTransition] = useTransition();
     const defaultValues = {
